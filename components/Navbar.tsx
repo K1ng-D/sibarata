@@ -40,7 +40,7 @@ const Navbar = () => {
         { title: 'Sambutan Kapala Satuan Kerja', href: '/pimpinan/sambutan' },
       ]
     },
-    { title: 'Fakta Nusantara', href: 'https://faktra.sibarata.com' },
+    { title: 'Berita', href: 'https://faktra.sibarata.com' },
     { 
       title: 'Layanan',
       submenu: [

@@ -176,7 +176,7 @@ const Hero = () => {
                 whileHover={{ x: 5, opacity: 1 }}
                 transition={{ duration: 0.2 }}
               >
-                <FiArrowRight className="ml-2 text-xl" />
+           
               </motion.div>
             </span>
           </motion.button>

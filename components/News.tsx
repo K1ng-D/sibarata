@@ -44,7 +44,7 @@ const News = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#1c2c66] mb-4">
-            FAKTRA
+            Berita Terbaru
           </h2>
           
           <motion.div
@@ -55,7 +55,7 @@ const News = () => {
           />
           
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Fakta Nusantara adalah portal berita resmi dari Bapas Surakarta yang menyajikan informasi terkini seputar kegiatan, program, dan perkembangan di lingkungan pemasyarakatan.
+            Dapatkan informasi terkini seputar kegiatan dan perkembangan terbaru di lingkungan Barata.
           </p>
         </motion.div>
 
@@ -70,7 +70,7 @@ const News = () => {
               whileHover={{ y: -5 }}
               className="group"
             >
-              <Link href={'/'}>
+              <Link href={'https://faktra.sibarata.com'}>
                 <motion.div
                   className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 h-full flex flex-col"
                   whileHover={{ scale: 1.02 }}
@@ -108,7 +108,7 @@ const News = () => {
 
                     {/* Read More Link */}
                     <motion.div
-                      className="flex items-center text-[#f8cb8b] font-medium text-sm mt-auto pt-4 border-t border-gray-100"
+                      className="flex items-center text-[#1c2c66] font-medium text-sm mt-auto pt-4 border-t border-gray-100"
                       whileHover={{ x: 5 }}
                     >
                       <span className="flex items-center gap-2">

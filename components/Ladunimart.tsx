@@ -119,7 +119,7 @@ const Ladunimart = () => {
                     whileHover={{ x: 5, opacity: 1 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <FiArrowRight className="ml-2 text-lg" />
+          
                   </motion.div>
                 </span>
               </motion.button>
