@@ -49,7 +49,10 @@ const Navbar = () => {
       submenu: [
         { title: "Maklumat Pelayanan", href: "/layanan/maklumat" },
         { title: "Standar Pelayanan", href: "/layanan/standar" },
-        { title: "Tralis", href: "/layanan/standar" },
+        {
+          title: "Tralis",
+          href: "https://sites.google.com/view/tralisbapassolo/home",
+        },
         { title: "Kompensasi Pelayanan", href: "/layanan/kompensasi" },
         { title: "Jangkauan Layanan", href: "/layanan/jangkauan" },
       ],
