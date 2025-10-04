@@ -1,36 +1,39 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import Logo from '@/public/logo.png'; // logo sibarata
-import { 
-  FiFacebook, 
-  FiTwitter, 
-  FiInstagram, 
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import Logo from "@/public/logo.png"; // logo sibarata
+import {
+  FiFacebook,
+  FiTwitter,
+  FiInstagram,
   FiYoutube,
   FiMapPin,
   FiPhone,
   FiMail,
-  FiArrowRight
-} from 'react-icons/fi';
+  FiArrowRight,
+} from "react-icons/fi";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { title: 'Beranda', href: '/' },
-    { title: 'Berita', href: 'https://faktra.sibarata.com' },
+    { title: "Beranda", href: "/" },
+    { title: "Berita", href: "https://faktra.sibarata.com" },
 
-    { title: 'Produk Hukum', href: '/produk-hukum' }
+    { title: "Produk Hukum", href: "/produk-hukum" },
   ];
 
   const services = [
-    { title: 'Maklumat Pelayanan', href: '/layanan/maklumat' },
-    { title: 'Jangkauan Pelayanan', href: '/layanan/jangkauan' },
-    { title: 'Pelayanan Kesehatan', href: '/layanan/kesehatan' },
-    { title: 'Kompensasi Pelayanan', href: '/layanan/kompensasi' },
-    { title: 'Standar Pelayanan', href: '/layanan/standar' }
+    { title: "Maklumat Pelayanan", href: "/layanan/maklumat" },
+    { title: "Standar Pelayanan", href: "/layanan/standar" },
+    {
+      title: "Tralis",
+      href: "https://sites.google.com/view/tralisbapassolo/home",
+    },
+    { title: "Kompensasi Pelayanan", href: "/layanan/kompensasi" },
+    { title: "Jangkauan Pelayanan", href: "/layanan/jangkauan" },
   ];
 
   return (
@@ -55,20 +58,32 @@ const Footer = () => {
               />
             </div>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Sistem Informasi Bapas Surakarta - Portal terpadu untuk layanan masyarakat 
-              dan informasi publik.
+              Sistem Informasi Bapas Surakarta - Portal terpadu untuk layanan
+              masyarakat dan informasi publik.
             </p>
             <div className="flex space-x-3">
-              <a href="#" className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg"
+              >
                 <FiFacebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg"
+              >
                 <FiTwitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg"
+              >
                 <FiInstagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg"
+              >
                 <FiYoutube className="w-5 h-5" />
               </a>
             </div>
@@ -86,7 +101,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.title}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="text-gray-600 hover:text-[#1c2c66] transition-colors text-sm flex items-center group"
                   >
@@ -105,12 +120,12 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h4 className="text-lg font-semibold text-[#1c2c66] mb-6 pb-2 border-b border-gray-200">
-              Layanan 
+              Layanan
             </h4>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service.title}>
-                  <Link 
+                  <Link
                     href={service.href}
                     className="text-gray-600 hover:text-[#1c2c66] transition-colors text-sm"
                   >
@@ -134,7 +149,8 @@ const Footer = () => {
               <div className="flex items-start">
                 <FiMapPin className="w-5 h-5 text-[#1c2c66] mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-600 text-sm">
-                  Jl. R. M. Said No.259, Manahan, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57139
+                  Jl. R. M. Said No.259, Manahan, Kec. Banjarsari, Kota
+                  Surakarta, Jawa Tengah 57139
                 </span>
               </div>
               <div className="flex items-center">
@@ -143,7 +159,9 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <FiMail className="w-5 h-5 text-[#1c2c66] mr-3 flex-shrink-0" />
-                <span className="text-gray-600 text-sm">bapassolo@gmail.com</span>
+                <span className="text-gray-600 text-sm">
+                  bapassolo@gmail.com
+                </span>
               </div>
             </div>
           </motion.div>
@@ -157,7 +175,8 @@ const Footer = () => {
           className="border-t border-gray-200 mt-8 pt-8 text-center"
         >
           <p className="text-gray-500 text-sm">
-            © {currentYear} Sistem Informasi Bapas Surakarta. All rights reserved.
+            © {currentYear} Sistem Informasi Bapas Surakarta. All rights
+            reserved.
           </p>
         </motion.div>
       </div>
