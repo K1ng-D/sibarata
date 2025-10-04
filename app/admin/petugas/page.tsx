@@ -6,6 +6,8 @@ interface Statistik {
   litmas: number;
   bimbingan: number;
   petugas: number;
+  pengaduan: number; // ✅ baru
+  pendampingan: number; // ✅ baru
 }
 
 export default function AdminPetugasPage() {
@@ -13,6 +15,8 @@ export default function AdminPetugasPage() {
     litmas: 0,
     bimbingan: 0,
     petugas: 0,
+    pengaduan: 0, // ✅ baru
+    pendampingan: 0, // ✅ baru
   });
   const [data, setData] = useState<Statistik | null>(null);
   const [isEdit, setIsEdit] = useState(false);
@@ -20,7 +24,16 @@ export default function AdminPetugasPage() {
   const fetchData = async () => {
     const res = await fetch("/api/statistik");
     const d = await res.json();
-    if (d) setData(d);
+    if (d) {
+      // fallback 0 jika API lama belum kirim field baru
+      setData({
+        litmas: Number(d.litmas ?? 0),
+        bimbingan: Number(d.bimbingan ?? 0),
+        petugas: Number(d.petugas ?? 0),
+        pengaduan: Number(d.pengaduan ?? 0), // ✅
+        pendampingan: Number(d.pendampingan ?? 0), // ✅
+      });
+    }
   };
 
   useEffect(() => {
@@ -28,7 +41,10 @@ export default function AdminPetugasPage() {
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: Number(e.target.value) });
+    const { name, value } = e.target;
+    // pastikan bilangan bulat & tidak negatif
+    const n = Math.max(0, Number(value));
+    setForm((prev) => ({ ...prev, [name]: n }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,7 +58,13 @@ export default function AdminPetugasPage() {
     alert(isEdit ? "Data berhasil diperbarui!" : "Data berhasil disimpan!");
     fetchData();
     setIsEdit(false);
-    setForm({ litmas: 0, bimbingan: 0, petugas: 0 });
+    setForm({
+      litmas: 0,
+      bimbingan: 0,
+      petugas: 0,
+      pengaduan: 0,
+      pendampingan: 0,
+    });
   };
 
   const handleDelete = async () => {
@@ -64,66 +86,131 @@ export default function AdminPetugasPage() {
     <div className="max-w-4xl mx-auto p-8 bg-gray-50 min-h-screen">
       {/* Header */}
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-[#1c2c66] mb-2">Kelola Statistik Sibarata</h2>
+        <h2 className="text-3xl font-bold text-[#1c2c66] mb-2">
+          Kelola Statistik Sibarata
+        </h2>
         <div className="w-24 h-1 bg-[#f8cb8b] mx-auto rounded-full"></div>
-        <p className="text-gray-600 mt-2">Kelola data statistik untuk tampilan website</p>
+        <p className="text-gray-600 mt-2">
+          Kelola data statistik untuk tampilan website
+        </p>
       </div>
 
       {/* Form Input */}
-      <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-lg shadow-sm border border-gray-200 mb-8">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 bg-white p-8 rounded-lg shadow-sm border border-gray-200 mb-8"
+      >
         <h3 className="text-xl font-semibold text-[#1c2c66] mb-4">
           {isEdit ? "Edit Data Statistik" : "Tambah Data Statistik"}
         </h3>
-        
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">Jumlah Litmas</label>
-          <input 
-            type="number" 
-            name="litmas" 
-            value={form.litmas} 
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent" 
-          />
-        </div>
-        
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">Jumlah Bimbingan Klien</label>
-          <input 
-            type="number" 
-            name="bimbingan" 
-            value={form.bimbingan} 
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent" 
-          />
-        </div>
-        
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">Jumlah Petugas Survey</label>
-          <input 
-            type="number" 
-            name="petugas" 
-            value={form.petugas} 
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent" 
-          />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Litmas */}
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Jumlah Litmas
+            </label>
+            <input
+              type="number"
+              name="litmas"
+              min={0}
+              step={1}
+              value={form.litmas}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent"
+            />
+          </div>
+
+          {/* Bimbingan */}
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Jumlah Bimbingan Klien
+            </label>
+            <input
+              type="number"
+              name="bimbingan"
+              min={0}
+              step={1}
+              value={form.bimbingan}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent"
+            />
+          </div>
+
+          {/* Petugas */}
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Jumlah Petugas Survey
+            </label>
+            <input
+              type="number"
+              name="petugas"
+              min={0}
+              step={1}
+              value={form.petugas}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent"
+            />
+          </div>
+
+          {/* Pengaduan ✅ baru */}
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Jumlah Pengaduan
+            </label>
+            <input
+              type="number"
+              name="pengaduan"
+              min={0}
+              step={1}
+              value={form.pengaduan}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent"
+            />
+          </div>
+
+          {/* Pendampingan ✅ baru */}
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">
+              Jumlah Pendampingan
+            </label>
+            <input
+              type="number"
+              name="pendampingan"
+              min={0}
+              step={1}
+              value={form.pendampingan}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#1c2c66] focus:border-transparent"
+            />
+          </div>
         </div>
 
-        <div className="flex gap-3">
-          <button 
+        <div className="flex gap-3 pt-2">
+          <button
             type="submit"
             className={`${
-              isEdit 
-                ? "bg-[#f8cb8b] text-[#1c2c66] hover:bg-[#f8cb8b]/90" 
+              isEdit
+                ? "bg-[#f8cb8b] text-[#1c2c66] hover:bg-[#f8cb8b]/90"
                 : "bg-[#1c2c66] text-white hover:bg-[#1c2c66]/90"
             } px-6 py-2 rounded-lg font-medium transition-colors`}
           >
             {isEdit ? "Update Data" : "Simpan Data"}
           </button>
-          
+
           {isEdit && (
-            <button 
-              type="button" 
-              onClick={() => { setIsEdit(false); setForm({ litmas: 0, bimbingan: 0, petugas: 0 }); }}
+            <button
+              type="button"
+              onClick={() => {
+                setIsEdit(false);
+                setForm({
+                  litmas: 0,
+                  bimbingan: 0,
+                  petugas: 0,
+                  pengaduan: 0,
+                  pendampingan: 0,
+                });
+              }}
               className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
             >
               Batal
@@ -135,32 +222,65 @@ export default function AdminPetugasPage() {
       {/* Tabel Data */}
       {data && (
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <h3 className="text-xl font-semibold text-[#1c2c66] mb-6">Data Statistik Saat Ini</h3>
-          
+          <h3 className="text-xl font-semibold text-[#1c2c66] mb-6">
+            Data Statistik Saat Ini
+          </h3>
+
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead className="bg-[#f8cb8b]/20">
                 <tr>
-                  <th className="border border-gray-200 p-4 text-left font-semibold text-[#1c2c66]">Jumlah Litmas</th>
-                  <th className="border border-gray-200 p-4 text-left font-semibold text-[#1c2c66]">Jumlah Bimbingan Klien</th>
-                  <th className="border border-gray-200 p-4 text-left font-semibold text-[#1c2c66]">Jumlah Petugas Survey</th>
-                  <th className="border border-gray-200 p-4 text-left font-semibold text-[#1c2c66]">Aksi</th>
+                  <th className="border border-gray-200 p-4 text-left font-semibold text-[#1c2c66]">
+                    Jumlah Litmas
+                  </th>
+                  <th className="border border-gray-200 p-4 text-left font-semibold text-[#1c2c66]">
+                    Jumlah Bimbingan Klien
+                  </th>
+                  <th className="border border-gray-200 p-4 text-left font-semibold text-[#1c2c66]">
+                    Jumlah Petugas Survey
+                  </th>
+                  <th className="border border-gray-200 p-4 text-left font-semibold text-[#1c2c66]">
+                    Jumlah Pengaduan
+                  </th>{" "}
+                  {/* ✅ */}
+                  <th className="border border-gray-200 p-4 text-left font-semibold text-[#1c2c66]">
+                    Jumlah Pendampingan
+                  </th>{" "}
+                  {/* ✅ */}
+                  <th className="border border-gray-200 p-4 text-left font-semibold text-[#1c2c66]">
+                    Aksi
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="border border-gray-200 p-4 text-center">{data.litmas}</td>
-                  <td className="border border-gray-200 p-4 text-center">{data.bimbingan}</td>
-                  <td className="border border-gray-200 p-4 text-center">{data.petugas}</td>
+                  <td className="border border-gray-200 p-4 text-center">
+                    {data.litmas?.toLocaleString?.("id-ID") ?? data.litmas}
+                  </td>
+                  <td className="border border-gray-200 p-4 text-center">
+                    {data.bimbingan?.toLocaleString?.("id-ID") ??
+                      data.bimbingan}
+                  </td>
+                  <td className="border border-gray-200 p-4 text-center">
+                    {data.petugas?.toLocaleString?.("id-ID") ?? data.petugas}
+                  </td>
+                  <td className="border border-gray-200 p-4 text-center">
+                    {data.pengaduan?.toLocaleString?.("id-ID") ??
+                      data.pengaduan}
+                  </td>
+                  <td className="border border-gray-200 p-4 text-center">
+                    {data.pendampingan?.toLocaleString?.("id-ID") ??
+                      data.pendampingan}
+                  </td>
                   <td className="border border-gray-200 p-4 text-center">
                     <div className="flex gap-2 justify-center">
-                      <button 
+                      <button
                         onClick={handleEdit}
                         className="bg-[#f8cb8b] text-[#1c2c66] px-4 py-2 rounded-lg font-medium hover:bg-[#f8cb8b]/90 transition-colors"
                       >
                         Edit
                       </button>
-                      <button 
+                      <button
                         onClick={handleDelete}
                         className="bg-red-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-600 transition-colors"
                       >
@@ -172,6 +292,13 @@ export default function AdminPetugasPage() {
               </tbody>
             </table>
           </div>
+
+          {/* Info kecil agar sinkron dengan tampilan frontend */}
+          <p className="text-xs text-gray-500 mt-4">
+            Pastikan API <code>/api/statistik</code> mengembalikan properti:{" "}
+            <code>litmas</code>, <code>bimbingan</code>, <code>petugas</code>,{" "}
+            <code>pengaduan</code>, <code>pendampingan</code>.
+          </p>
         </div>
       )}
     </div>

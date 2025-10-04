@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import Logo from '@/public/logo.png';
-import Logo1 from '@/public/logo1.png';
-import Logo2 from '@/public/logo2.png';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiChevronDown, FiInfo, FiUser } from 'react-icons/fi';
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Logo from "@/public/logo.png";
+import Logo1 from "@/public/logo1.png";
+import Logo2 from "@/public/logo2.png";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiMenu, FiX, FiChevronDown, FiInfo, FiUser } from "react-icons/fi";
 
 interface SubMenu {
   title: string;
@@ -26,32 +26,36 @@ const Navbar = () => {
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
   const menuItems: MenuItem[] = [
-    { title: 'Beranda', href: '/' },
+    { title: "Beranda", href: "/" },
     {
-      title: 'Profile',
+      title: "Profile",
       submenu: [
-        { title: 'Sejarah Pemasyarakatan', href: '/tentang' },
-        { title: 'Kedudukan, Tugas dan Fungsi', href: '/tentang/tugas-fungsi' },
-        { title: 'Visi, Misi dan Tata Nilai', href: '/tentang/visi-misi' },
-        { title: 'Mars Pemasyarakatan', href: '/tentang/mars' },
-        { title: 'Corporate University', href: '/tentang/corporate-university' },
-        { title: 'Sarana dan Prasarana', href: '/tentang/sarana-prasarana' },
-        { title: 'Profil Pejabat', href: '/pimpinan/profil' },
-        { title: 'Sambutan Kapala Satuan Kerja', href: '/pimpinan/sambutan' },
-      ]
+        { title: "Sejarah Pemasyarakatan", href: "/tentang" },
+        { title: "Kedudukan, Tugas dan Fungsi", href: "/tentang/tugas-fungsi" },
+        { title: "Visi, Misi dan Tata Nilai", href: "/tentang/visi-misi" },
+        { title: "Mars Pemasyarakatan", href: "/tentang/mars" },
+        {
+          title: "Corporate University",
+          href: "/tentang/corporate-university",
+        },
+        { title: "Sarana dan Prasarana", href: "/tentang/sarana-prasarana" },
+        { title: "Profil Pejabat", href: "/pimpinan/profil" },
+        { title: "Sambutan Kapala Satuan Kerja", href: "/pimpinan/sambutan" },
+      ],
     },
-    { title: 'Berita', href: 'https://faktra.sibarata.com' },
-    { 
-      title: 'Layanan',
+    { title: "Berita", href: "https://faktra.sibarata.com" },
+    {
+      title: "Layanan",
       submenu: [
-        { title: 'Maklumat Pelayanan', href: '/layanan/maklumat' },
-        { title: 'Jangkauan Layanan', href: '/layanan/jangkauan' },
-        { title: 'Kompensasi Pelayanan', href: '/layanan/kompensasi' },
-        { title: 'Standar Pelayanan', href: '/layanan/standar' },
-      ]
+        { title: "Maklumat Pelayanan", href: "/layanan/maklumat" },
+        { title: "Standar Pelayanan", href: "/layanan/standar" },
+        { title: "Tralis", href: "/layanan/standar" },
+        { title: "Kompensasi Pelayanan", href: "/layanan/kompensasi" },
+        { title: "Jangkauan Layanan", href: "/layanan/jangkauan" },
+      ],
     },
 
-    { title: 'Produk Hukum', href: '/produk-hukum' },
+    { title: "Produk Hukum", href: "/produk-hukum" },
   ];
 
   const toggleSubmenu = (title: string) => {
@@ -73,16 +77,16 @@ const Navbar = () => {
                   className="h-10 w-auto"
                   priority
                 />
-                 <Image
-                  src={Logo2}
+                <Image
+                  src={Logo1}
                   alt="Sibarata Logo"
                   width={1200}
                   height={1200}
                   className="h-10 w-auto"
                   priority
                 />
-                 <Image
-                  src={Logo1}
+                <Image
+                  src={Logo2}
                   alt="Sibarata Logo"
                   width={1200}
                   height={1200}
@@ -118,7 +122,7 @@ const Navbar = () => {
                     </motion.div>
                   </button>
                 )}
-                
+
                 {item.submenu && openSubmenu === item.title && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -128,13 +132,18 @@ const Navbar = () => {
                     className="absolute left-0 mt-1 w-60 bg-white rounded-lg shadow-lg py-2 z-50 border border-gray-100 overflow-hidden"
                   >
                     {item.submenu.map((subItem, index) => (
-                      <div key={subItem.title} className="border-b border-gray-100 last:border-b-0">
+                      <div
+                        key={subItem.title}
+                        className="border-b border-gray-100 last:border-b-0"
+                      >
                         <Link
                           href={subItem.href}
                           className="flex items-center px-4 py-2 text-gray-700 hover:bg-[#f8cb8b]/30 hover:text-[#1c2c66] transition-all duration-200 text-sm"
                           onClick={() => setOpenSubmenu(null)}
                         >
-                          {subItem.icon || <FiInfo className="mr-2 text-[#1c2c66] text-xs" />}
+                          {subItem.icon || (
+                            <FiInfo className="mr-2 text-[#1c2c66] text-xs" />
+                          )}
                           <span>{subItem.title}</span>
                         </Link>
                       </div>
@@ -162,14 +171,17 @@ const Navbar = () => {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="md:hidden bg-white shadow-xl border-t border-gray-100"
           >
             <div className="px-3 py-3 space-y-1">
               {menuItems.map((item) => (
-                <div key={item.title} className="border-b border-gray-100 last:border-b-0 pb-1 last:pb-0">
+                <div
+                  key={item.title}
+                  className="border-b border-gray-100 last:border-b-0 pb-1 last:pb-0"
+                >
                   {item.href ? (
                     <Link
                       href={item.href}
@@ -186,17 +198,19 @@ const Navbar = () => {
                       >
                         <span>{item.title}</span>
                         <motion.div
-                          animate={{ rotate: openSubmenu === item.title ? 180 : 0 }}
+                          animate={{
+                            rotate: openSubmenu === item.title ? 180 : 0,
+                          }}
                           transition={{ duration: 0.2 }}
                         >
                           <FiChevronDown className="text-xs" />
                         </motion.div>
                       </button>
-                      
+
                       {item.submenu && openSubmenu === item.title && (
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
+                          animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.2 }}
                           className="pl-5 space-y-1 border-l-2 border-[#f8cb8b] ml-3 mt-1"
@@ -209,7 +223,9 @@ const Navbar = () => {
                                 onClick={() => setIsOpen(false)}
                               >
                                 <div className="flex items-center">
-                                  {subItem.icon || <FiInfo className="mr-2 text-xs" />}
+                                  {subItem.icon || (
+                                    <FiInfo className="mr-2 text-xs" />
+                                  )}
                                   {subItem.title}
                                 </div>
                               </Link>

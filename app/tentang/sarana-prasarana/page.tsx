@@ -1,9 +1,18 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiHome, FiCpu, FiPrinter, FiBook, FiShield, FiX, FiArrowRight, FiChevronRight } from "react-icons/fi";
+import {
+  FiHome,
+  FiCpu,
+  FiPrinter,
+  FiBook,
+  FiShield,
+  FiX,
+  FiArrowRight,
+  FiChevronRight,
+} from "react-icons/fi";
 import { FaCar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
@@ -38,27 +47,45 @@ const SaranaPrasaranaPage = () => {
       category: "Gedung dan Ruangan",
       icon: <FiHome className="text-2xl text-[#1c2c66]" />,
       items: [
-        { name: "Gedung Utama", description: "Gedung 3 lantai dengan area kerja modern" },
-        { name: "Ruang Kepala Bapas", description: "Ruang kerja pimpinan yang representatif" },
+        {
+          name: "Gedung Utama",
+          description: "Gedung 3 lantai dengan area kerja modern",
+        },
+        {
+          name: "Ruang Kepala Bapas",
+          description: "Ruang kerja pimpinan yang representatif",
+        },
+        { name: "Mushola", description: "Tempat ibadah yang nyaman" },
       ],
     },
     {
       category: "Teknologi Informasi",
       icon: <FiCpu className="text-2xl text-[#1c2c66]" />,
       items: [
-        { name: "Jaringan Internet", description: "Koneksi fiber optic 100 Mbps" },
+        {
+          name: "Jaringan Internet",
+          description: "Koneksi fiber optic 100 Mbps",
+        },
         { name: "Server Lokal", description: "Data center dengan redundansi" },
       ],
     },
     {
       category: "Kendaraan Operasional",
       icon: <FaCar className="text-2xl text-[#1c2c66]" />,
-      items: [{ name: "Mobil Dinas", description: "Kendaraan operasional lapangan" }],
+      items: [
+        { name: "Mobil Dinas", description: "Kendaraan operasional lapangan" },
+        {
+          name: "Sepeda Motor Dinas",
+          description: "Kendaraan operasional petugas",
+        },
+      ],
     },
     {
       category: "Peralatan Kantor",
       icon: <FiPrinter className="text-2xl text-[#1c2c66]" />,
-      items: [{ name: "Printer & Scanner", description: "Multifunction devices" }],
+      items: [
+        { name: "Printer & Scanner", description: "Multifunction devices" },
+      ],
     },
     {
       category: "Fasilitas Pendukung",
@@ -87,9 +114,9 @@ const SaranaPrasaranaPage = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -98,9 +125,9 @@ const SaranaPrasaranaPage = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
   const openModal = (item: GaleriItem) => {
@@ -114,14 +141,14 @@ const SaranaPrasaranaPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Header */}
-      <motion.header 
+      <motion.header
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="bg-gradient-to-r from-[#1c2c66] to-[#2a3b7a] text-white pt-20 pb-12"
       >
         <div className="max-w-6xl mx-auto px-4">
-          <motion.h1 
+          <motion.h1
             className="text-4xl font-bold mb-4"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -129,18 +156,26 @@ const SaranaPrasaranaPage = () => {
           >
             Tentang Satuan Kerja
           </motion.h1>
-          <motion.nav 
+          <motion.nav
             className="text-sm text-gray-300 flex items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
+            <Link
+              href="/"
+              className="hover:text-white transition-colors flex items-center gap-1"
+            >
               <FiHome size={14} />
               Beranda
             </Link>
             <FiChevronRight className="mx-2" size={12} />
-            <Link href="/tentang" className="hover:text-white transition-colors">Tentang Satuan Kerja</Link>
+            <Link
+              href="/tentang"
+              className="hover:text-white transition-colors"
+            >
+              Tentang Satuan Kerja
+            </Link>
             <FiChevronRight className="mx-2" size={12} />
             <span className="text-white">Sarana dan Prasarana</span>
           </motion.nav>
@@ -149,9 +184,8 @@ const SaranaPrasaranaPage = () => {
 
       <main className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          
           {/* Sidebar */}
-          <motion.aside 
+          <motion.aside
             className="lg:col-span-1"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -161,13 +195,13 @@ const SaranaPrasaranaPage = () => {
               whileHover={{ y: -2 }}
               className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-24"
             >
-              <motion.h2 
+              <motion.h2
                 className="text-xl font-semibold text-[#1c2c66] mb-4"
                 whileHover={{ x: 3 }}
               >
                 Tentang Satuan Kerja
               </motion.h2>
-              <motion.ul 
+              <motion.ul
                 className="space-y-2"
                 variants={containerVariants}
                 initial="hidden"
@@ -205,7 +239,7 @@ const SaranaPrasaranaPage = () => {
           </motion.aside>
 
           {/* Main Content */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-3"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -215,10 +249,9 @@ const SaranaPrasaranaPage = () => {
               whileHover={{ scale: 1.005 }}
               className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
             >
-              
               {/* Hero Section */}
               <div className="bg-gradient-to-r from-[#1c2c66] to-[#2a3b7a] p-8 text-white">
-                <motion.div 
+                <motion.div
                   className="flex items-center"
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -231,8 +264,12 @@ const SaranaPrasaranaPage = () => {
                     <FiHome className="text-3xl mr-4" />
                   </motion.div>
                   <div>
-                    <h1 className="text-3xl font-bold mb-2">Sarana dan Prasarana</h1>
-                    <p className="text-gray-300">Fasilitas Penunjang Pelayanan Bapas Kelas I Surakarta</p>
+                    <h1 className="text-3xl font-bold mb-2">
+                      Sarana dan Prasarana
+                    </h1>
+                    <p className="text-gray-300">
+                      Fasilitas Penunjang Pelayanan Bapas Kelas I Surakarta
+                    </p>
                   </div>
                 </motion.div>
               </div>
@@ -244,29 +281,39 @@ const SaranaPrasaranaPage = () => {
                   animate="visible"
                 >
                   {/* Introduction */}
-                  <motion.div variants={itemVariants} className="prose max-w-none mb-8">
+                  <motion.div
+                    variants={itemVariants}
+                    className="prose max-w-none mb-8"
+                  >
                     <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                      Bapas Kelas I Surakarta dilengkapi dengan sarana dan prasarana modern yang mendukung
-                      pelaksanaan tugas dan fungsi dalam memberikan pelayanan terbaik kepada masyarakat.
-                      Semua fasilitas didesain untuk menunjang efisiensi, kenyamanan, dan keamanan.
+                      Bapas Kelas I Surakarta dilengkapi dengan sarana dan
+                      prasarana modern yang mendukung pelaksanaan tugas dan
+                      fungsi dalam memberikan pelayanan terbaik kepada
+                      masyarakat. Semua fasilitas didesain untuk menunjang
+                      efisiensi, kenyamanan, dan keamanan.
                     </p>
                   </motion.div>
 
                   {/* Statistics */}
-                  <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+                  <motion.div
+                    variants={itemVariants}
+                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12"
+                  >
                     {stats.map((stat, index) => (
                       <motion.div
                         key={index}
                         whileHover={{ y: -5, scale: 1.05 }}
                         className="bg-[#f8cb8b]/20 rounded-lg p-4 text-center border border-[#f8cb8b]/30 hover:shadow-md transition-all duration-300"
                       >
-                        <motion.div 
+                        <motion.div
                           className="text-2xl font-bold text-[#1c2c66] mb-1"
                           whileHover={{ scale: 1.1 }}
                         >
                           {stat.number}
                         </motion.div>
-                        <div className="text-sm text-gray-600">{stat.label}</div>
+                        <div className="text-sm text-gray-600">
+                          {stat.label}
+                        </div>
                       </motion.div>
                     ))}
                   </motion.div>
@@ -274,20 +321,22 @@ const SaranaPrasaranaPage = () => {
                   {/* Facilities Grid */}
                   <motion.div variants={itemVariants} className="space-y-8">
                     {facilities.map((facility, index) => (
-                      <motion.div 
+                      <motion.div
                         key={index}
                         whileHover={{ y: -3 }}
                         className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
                       >
                         <div className="bg-[#f8cb8b]/20 px-6 py-4 border-b border-[#f8cb8b]/30">
                           <div className="flex items-center">
-                            <motion.div 
+                            <motion.div
                               className="bg-white p-2 rounded-full mr-3"
                               whileHover={{ scale: 1.1 }}
                             >
                               {facility.icon}
                             </motion.div>
-                            <h2 className="text-xl font-semibold text-[#1c2c66]">{facility.category}</h2>
+                            <h2 className="text-xl font-semibold text-[#1c2c66]">
+                              {facility.category}
+                            </h2>
                           </div>
                         </div>
 
@@ -299,15 +348,19 @@ const SaranaPrasaranaPage = () => {
                                 whileHover={{ x: 3, scale: 1.02 }}
                                 className="flex items-start p-4 bg-gray-50 rounded-lg hover:bg-[#f8cb8b]/10 transition-all duration-300 border border-gray-200 hover:shadow-md"
                               >
-                                <motion.div 
+                                <motion.div
                                   className="bg-[#1c2c66] p-2 rounded-full mr-4"
                                   whileHover={{ scale: 1.2 }}
                                 >
                                   <div className="w-2 h-2 bg-white rounded-full"></div>
                                 </motion.div>
                                 <div>
-                                  <h3 className="font-semibold text-[#1c2c66] mb-1">{item.name}</h3>
-                                  <p className="text-sm text-gray-600">{item.description}</p>
+                                  <h3 className="font-semibold text-[#1c2c66] mb-1">
+                                    {item.name}
+                                  </h3>
+                                  <p className="text-sm text-gray-600">
+                                    {item.description}
+                                  </p>
                                 </div>
                               </motion.div>
                             ))}
@@ -319,7 +372,9 @@ const SaranaPrasaranaPage = () => {
 
                   {/* Gallery Section */}
                   <motion.div variants={itemVariants} className="mt-12">
-                    <h2 className="text-2xl font-bold text-[#1c2c66] mb-6">Galeri Fasilitas</h2>
+                    <h2 className="text-2xl font-bold text-[#1c2c66] mb-6">
+                      Galeri Fasilitas
+                    </h2>
                     {galeri.length === 0 ? (
                       <p className="text-gray-500">Belum ada gambar.</p>
                     ) : (
@@ -339,7 +394,9 @@ const SaranaPrasaranaPage = () => {
                               transition={{ duration: 0.3 }}
                             />
                             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                              <span className="text-white font-semibold text-center px-2">{item.title}</span>
+                              <span className="text-white font-semibold text-center px-2">
+                                {item.title}
+                              </span>
                             </div>
                           </motion.div>
                         ))}
@@ -378,7 +435,7 @@ const SaranaPrasaranaPage = () => {
               >
                 <FiX className="w-8 h-8 mt-5 mb-5" />
               </motion.button>
-              
+
               <div className="bg-white rounded-lg overflow-hidden">
                 <motion.img
                   src={selectedImage.url}
