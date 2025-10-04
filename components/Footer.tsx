@@ -149,8 +149,8 @@ const Footer = () => {
               <div className="flex items-start">
                 <FiMapPin className="w-5 h-5 text-[#1c2c66] mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-600 text-sm">
-                  Jl. R. M. Said No.259, Manahan, Kec. Banjarsari, Kota
-                  Surakarta, Jawa Tengah 57139
+                  Jl. RM.Said No.259, Manahan, Kec. Banjarsari, Kota Surakarta,
+                  Jawa Tengah 57139
                 </span>
               </div>
               <div className="flex items-center">
