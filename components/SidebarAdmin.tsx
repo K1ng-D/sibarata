@@ -1,28 +1,47 @@
 // components/SidebarAdmin.tsx
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { 
-  FiHome, 
-  FiFileText, 
-  FiSettings, 
-  FiInfo, 
-  FiBook, 
-  FiUsers
-} from 'react-icons/fi';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  FiHome,
+  FiFileText,
+  FiSettings,
+  FiInfo,
+  FiBook,
+  FiUsers,
+} from "react-icons/fi";
 import { LuFolderOpen } from "react-icons/lu";
 
 const SidebarAdmin = () => {
   const pathname = usePathname();
 
   const menuItems = [
-    { href: '/admin', label: 'Dashboard', icon: <FiHome className="w-5 h-5" /> },
-    { href: '/admin/layanan', label: 'Layanan', icon: <FiSettings className="w-5 h-5" /> },
-    { href: '/admin/informasi', label: 'Informasi Publik', icon: <FiInfo className="w-5 h-5" /> },
-    { href: '/admin/produk-hukum', label: 'Produk Hukum', icon: <FiBook className="w-5 h-5" /> },
-    { href: '/admin/petugas', label: 'Petugas', icon: <FiUsers className="w-5 h-5" /> },
-    { href: '/admin/galeri', label: 'Galeri', icon: <LuFolderOpen className="w-5 h-5" /> },
+    {
+      href: "/admin",
+      label: "Dashboard",
+      icon: <FiHome className="w-5 h-5" />,
+    },
+    {
+      href: "/admin/layanan",
+      label: "Layanan",
+      icon: <FiSettings className="w-5 h-5" />,
+    },
+    {
+      href: "/admin/informasi",
+      label: "Informasi Publik",
+      icon: <FiInfo className="w-5 h-5" />,
+    },
+    {
+      href: "/admin/produk-hukum",
+      label: "Produk Hukum",
+      icon: <FiBook className="w-5 h-5" />,
+    },
+    {
+      href: "/admin/petugas",
+      label: "Petugas",
+      icon: <FiUsers className="w-5 h-5" />,
+    },
   ];
 
   return (
@@ -41,11 +60,15 @@ const SidebarAdmin = () => {
             href={item.href}
             className={`flex items-center space-x-3 py-3 px-4 rounded-lg transition duration-200 ${
               pathname === item.href
-                ? 'bg-gray-700 text-white shadow-sm'
-                : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                ? "bg-gray-700 text-white shadow-sm"
+                : "text-gray-300 hover:bg-gray-700 hover:text-white"
             }`}
           >
-            <div className={`${pathname === item.href ? 'text-blue-400' : 'text-gray-400'}`}>
+            <div
+              className={`${
+                pathname === item.href ? "text-blue-400" : "text-gray-400"
+              }`}
+            >
               {item.icon}
             </div>
             <span className="text-sm font-medium">{item.label}</span>
