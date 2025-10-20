@@ -4,47 +4,59 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiMusic, FiHome, FiChevronRight, FiArrowRight } from "react-icons/fi";
 
-const YT_ID = "8hMcY0A9GIY"; // dari link: https://youtu.be/8hMcY0A9GIY?si=...
+const YT_ID = "-4CCmAbM400?si=vx9zfVrNFlFdRGWw "; // dari link: https://youtu.be/8hMcY0A9GIY?si=...
 
 const MarsPage = () => {
   const sidebarItems = [
-    { title: "Sejarah Pemasyarakatan", href: "/tentang" },
+    { title: "Sejarah Bapas Surakarta", href: "/tentang" },
     { title: "Kedudukan, Tugas dan Fungsi", href: "/tentang/tugas-fungsi" },
     { title: "Visi, Misi dan Tata Nilai", href: "/tentang/visi-misi" },
     { title: "Mars Pemasyarakatan", href: "/tentang/mars" },
     { title: "Corporate University", href: "/tentang/corporate-university" },
+    { title: "Prestasi", href: "/tentang/prestasi" },
     { title: "Sarana dan Prasarana", href: "/tentang/sarana-prasarana" },
+    { title: "Profil Pejabat", href: "/pimpinan/profil" },
+    { title: "Sambutan Kapala Satuan Kerja", href: "/pimpinan/sambutan" },
   ];
 
   const lirikMars = [
     {
       bait: 1,
-      lirik: `Kami petugas pemasyarakatan
-Sebagai penegak hukum
-Mengayom sesama insan
-Tegakkan Hak Asasi Manusia`,
+      lirik: `Satukan Visi, Melangkah dengan Berani
+’Tuk Menggapai Cita Mulia
+Junjung Keadilan, Wujudkan Rasa Aman
+Di Atas Tanah Bumi Pertiwi`,
     },
     {
       bait: 2,
-      lirik: `Ikhlas mengabdi pada masyarakat
-Mengemban tugas mulia
-Membina pelanggar hukum
-Dengan berlandaskan pancasila`,
+      lirik: `Kementerian Imigrasi dan Pemasyarakatan Republik Indonesia
+Garda Terdepan Menjaga Kedaulatan
+Mengawasi dan Mengayomi`,
     },
     {
       bait: 3,
-      lirik: `Kobarkan semangatmu tuk melawan tantangan
-Pantang mundur hadapi cobaan
-Jadikan teladan
-Pancarkan wibawa
-Dibawah panji pengayoman`,
+      lirik: `Berwibawa, Berintegritas
+Terhormat dan Terpercaya
+Peduli, Mendampingi
+Tangguh Hadapi Rintangan`,
     },
     {
       bait: 4,
-      lirik: `Berlandaskan etos kerja tri darma
-Turut bangun negara
-Mewujudkan cita-cita
-Masyarakat yang adil dan makmur`,
+      lirik: `Kami Siap ’Tuk Mengabdi
+Menjaga dan Melindungi
+Seluruh Jiwa Raga Kami
+Untuk Negara`,
+    },
+    {
+      bait: 5,
+      lirik: `Kami Siap ’Tuk Berbakti
+Menuntun dan Melayani
+Berikan Yang Terbaik
+Untuk Negara`,
+    },
+    {
+      bait: 6,
+      lirik: `Kementerian Imigrasi dan Pemasyarakatan Republik Indonesia`,
     },
   ];
 
@@ -96,7 +108,9 @@ Masyarakat yang adil dan makmur`,
               Tentang Satuan Kerja
             </Link>
             <FiChevronRight className="mx-2" size={12} />
-            <span className="text-white">Mars Pemasyarakatan</span>
+            <span className="text-white">
+              Mars Kemeterian Imigrasi dan Pemasyarakatan
+            </span>
           </motion.nav>
         </div>
       </motion.header>
@@ -184,11 +198,8 @@ Masyarakat yang adil dan makmur`,
                   </motion.div>
                   <div>
                     <h1 className="text-3xl font-bold mb-2">
-                      Mars Pemasyarakatan
+                      Mars Kemeterian Imigrasi dan Pemasyarakatan
                     </h1>
-                    <p className="text-gray-300">
-                      Lagu Kebangsaan Petugas Pemasyarakatan Indonesia
-                    </p>
                   </div>
                 </motion.div>
               </div>
@@ -211,7 +222,7 @@ Masyarakat yang adil dan makmur`,
                         <iframe
                           className="absolute inset-0 h-full w-full"
                           src={`https://www.youtube-nocookie.com/embed/${YT_ID}?rel=0&modestbranding=1`}
-                          title="Mars Pemasyarakatan"
+                          title="Mars Kemeterian Imigrasi dan Pemasyarakatan"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                           allowFullScreen
                           loading="lazy"
@@ -236,7 +247,7 @@ Masyarakat yang adil dan makmur`,
                   {/* ===== Lirik Section ===== */}
                   <motion.div variants={itemVariants} className="mb-8">
                     <h2 className="text-2xl font-bold text-[#1c2c66] mb-6 border-b border-gray-200 pb-2">
-                      Lirik Mars Pemasyarakatan
+                      Lirik Mars Kemeterian Imigrasi dan Pemasyarakatan
                     </h2>
 
                     <div className="space-y-8">
@@ -274,7 +285,7 @@ Masyarakat yang adil dan makmur`,
                       className="bg-[#f8cb8b]/20 border-l-4 border-[#1c2c66] p-6 rounded-r-lg"
                     >
                       <h3 className="text-lg font-semibold text-[#1c2c66] mb-3">
-                        Makna Mars Pemasyarakatan
+                        Makna Mars Kemeterian Imigrasi dan Pemasyarakatan
                       </h3>
                       <ul className="text-gray-600 space-y-2 text-sm">
                         {[

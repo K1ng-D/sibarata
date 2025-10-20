@@ -63,25 +63,25 @@ const Footer = () => {
             </p>
             <div className="flex space-x-3">
               <a
-                href="#"
+                href="https://www.facebook.com/kemenimipas/"
                 className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg"
               >
                 <FiFacebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://x.com/kemenimipas_ri"
                 className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg"
               >
                 <FiTwitter className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/kemenimipas"
                 className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg"
               >
                 <FiInstagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/@kemenimipas"
                 className="text-gray-400 hover:text-[#1c2c66] transition-colors p-2 hover:bg-[#f8cb8b]/20 rounded-lg"
               >
                 <FiYoutube className="w-5 h-5" />

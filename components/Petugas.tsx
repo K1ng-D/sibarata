@@ -35,9 +35,11 @@ const StatistikCard = ({ title, value, icon, delay = 0 }: any) => (
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className="text-xs font-medium uppercase tracking-wide text-gray-500 mb-1 line-clamp-1">
+          {/* Perubahan di sini: buang line-clamp-1, tambah wrap */}
+          <h3 className="text-xs font-medium uppercase tracking-wide text-gray-500 mb-1 whitespace-normal break-words">
             {title}
           </h3>
+
           <motion.p
             key={value}
             initial={{ scale: 0.95, opacity: 0 }}
@@ -111,7 +113,6 @@ export default function StatistikSection() {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-white py-16">
-      {/* BG emoji: disembunyikan di mobile agar tidak tumpang tindih */}
       <motion.div
         className="pointer-events-none absolute left-8 top-8 hidden text-6xl opacity-10 md:block text-[#f8cb8b]"
         animate={{ y: [0, -10, 0] }}
@@ -143,7 +144,6 @@ export default function StatistikSection() {
           </p>
         </motion.div>
 
-        {/* Grid auto-fit + cell stretch */}
         <div
           className="
             grid items-stretch
@@ -157,7 +157,6 @@ export default function StatistikSection() {
         </div>
       </div>
 
-      {/* BG dekorasi aman */}
       <motion.div
         className="absolute -left-16 -bottom-16 h-40 w-40 rounded-full bg-[#f8cb8b] opacity-5"
         animate={{ scale: [1, 1.15, 1] }}

@@ -16,47 +16,54 @@ import {
 
 const TugasFungsiPage = () => {
   const sidebarItems = [
-    { title: "Sejarah Pemasyarakatan", href: "/tentang" },
+    { title: "Sejarah Bapas Surakarta", href: "/tentang" },
     { title: "Kedudukan, Tugas dan Fungsi", href: "/tentang/tugas-fungsi" },
     { title: "Visi, Misi dan Tata Nilai", href: "/tentang/visi-misi" },
     { title: "Mars Pemasyarakatan", href: "/tentang/mars" },
     { title: "Corporate University", href: "/tentang/corporate-university" },
+    { title: "Prestasi", href: "/tentang/prestasi" },
     { title: "Sarana dan Prasarana", href: "/tentang/sarana-prasarana" },
+    { title: "Profil Pejabat", href: "/pimpinan/profil" },
+    { title: "Sambutan Kapala Satuan Kerja", href: "/pimpinan/sambutan" },
   ];
 
+  // ====== DATA TUGAS & FUNGSI (6 poin baru) ======
   const tugasFungsiItems = [
     {
       icon: <FiClipboard className="text-2xl text-[#1c2c66]" />,
       title: "Penelitian Kemasyarakatan (Litmas)",
       description:
-        "Membuat penelitian kemasyarakatan (litmas) untuk bahan sidang peradilan anak, litmas bimbingan dan litmas integrasi",
-    },
-    {
-      icon: <FiBook className="text-2xl text-[#1c2c66]" />,
-      title: "Registrasi Klien Pemasyarakatan",
-      description: "Melakukan registrasi klien pemasyarakatan",
+        "Membuat penelitian kemasyarakatan (litmas) untuk bahan sidang peradilan anak, litmas bimbingan, dan litmas integrasi.",
     },
     {
       icon: <FiUsers className="text-2xl text-[#1c2c66]" />,
-      title: "Bimbingan Kemasyarakatan",
-      description: "Melakukan bimbingan kemasyarakatan dan pengentasan anak",
+      title: "Pendampingan Pemasyarakatan",
+      description:
+        "Melakukan pendampingan kepada klien pemasyarakatan, terutama anak yang berkonflik dengan hukum selama proses peradilan pidana dan setelahnya.",
     },
     {
-      icon: <FiFileText className="text-2xl text-[#1c2c66]" />,
-      title: "Kehadiran di Sidang Pengadilan",
+      icon: <FiBook className="text-2xl text-[#1c2c66]" />,
+      title: "Pembimbingan Kemasyarakatan",
       description:
-        "Mengikuti sidang pengadilan di Pengadilan Negeri dan sidang Tim Pengamat Pemasyarakatan di Lembaga Pemasyarakatan sesuai dengan peraturan perundang-undangan yang berlaku",
-    },
-    {
-      icon: <FiHelpCircle className="text-2xl text-[#1c2c66]" />,
-      title: "Bimbingan dan Bantuan",
-      description:
-        "Memberi bantuan bimbingan kepada bekas narapidana, anak Negara dan Klien pemasyarakatan yang memerlukan",
+        "Serangkaian kegiatan yang dilakukan oleh pembimbing kemasyarakatan agar klien menjadi pribadi mandiri dan terampil sehingga dapat kembali ke masyarakat dengan baik.",
     },
     {
       icon: <FiCheckCircle className="text-2xl text-[#1c2c66]" />,
-      title: "Tata Usaha",
-      description: "Melakukan urusan tata usaha Bapas Surakarta",
+      title: "Pengawasan",
+      description:
+        "Kegiatan untuk memantau dan memastikan klien pemasyarakatan menjalankan kewajiban serta program yang telah direkomendasikan.",
+    },
+    {
+      icon: <FiFileText className="text-2xl text-[#1c2c66]" />,
+      title: "Sidang TPP (Tim Pengamat Pemasyarakatan)",
+      description:
+        "Forum pengambilan keputusan yang melibatkan pembimbing pemasyarakatan terkait program yang direkomendasikan bagi klien pemasyarakatan.",
+    },
+    {
+      icon: <FiHelpCircle className="text-2xl text-[#1c2c66]" />,
+      title: "Koordinasi Stakeholder Lain",
+      description:
+        "Melakukan koordinasi dengan pemangku kepentingan lain guna mendukung efektivitas pelaksanaan program pemasyarakatan.",
     },
   ];
 
@@ -86,7 +93,7 @@ const TugasFungsiPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Tentang Satuan Kerja
+            Kedudukan, Tugas dan Fungsi
           </motion.h1>
           <motion.nav
             className="text-sm text-gray-300 flex items-center"
@@ -167,25 +174,6 @@ const TugasFungsiPage = () => {
                   </motion.li>
                 ))}
               </motion.ul>
-
-              {/* Quick anchors */}
-              <div className="mt-6 border-t pt-4">
-                <p className="text-xs text-gray-500 mb-2">Navigasi cepat</p>
-                <div className="space-y-2">
-                  <a
-                    href="#struktur"
-                    className="block text-sm text-[#1c2c66] hover:underline"
-                  >
-                    Struktur Organisasi
-                  </a>
-                  <a
-                    href="#tugas-fungsi"
-                    className="block text-sm text-[#1c2c66] hover:underline"
-                  >
-                    Tugas & Fungsi
-                  </a>
-                </div>
-              </div>
             </motion.div>
           </motion.aside>
 
@@ -208,7 +196,7 @@ const TugasFungsiPage = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.7 }}
                 >
-                  STRUKTUR ORGANISASI & TUGAS-FUNGSI
+                  KEDUDUKAN, TUGAS & FUNGSI
                 </motion.h1>
                 <motion.p
                   className="text-gray-300"
@@ -226,113 +214,32 @@ const TugasFungsiPage = () => {
                   initial="hidden"
                   animate="visible"
                 >
-                  {/* ===== Struktur Organisasi (DULUAN) ===== */}
+                  {/* ===== Struktur Organisasi (dengan frame PDF) ===== */}
                   <motion.div
                     id="struktur"
                     variants={itemVariants}
                     className="mb-10"
                   >
                     <h2 className="text-2xl font-bold text-[#1c2c66] mb-4">
-                      Struktur Organisasi Bapas Surakarta
+                      Struktur Organisasi
                     </h2>
+
+                    {/* Frame PDF responsif */}
                     <motion.div
-                      className="bg-gray-50 rounded-lg p-6 border border-gray-200"
+                      className="bg-gray-50 rounded-lg p-4 border border-gray-200"
                       whileHover={{ y: -2 }}
                     >
-                      <div className="text-center mb-6">
-                        <motion.div
-                          className="bg-[#1c2c66] text-white py-3 px-6 rounded-t-lg"
-                          whileHover={{ scale: 1.02 }}
-                        >
-                          <h3 className="font-semibold">Kepala Bapas</h3>
-                        </motion.div>
-                        <div className="border border-gray-200 border-t-0 rounded-b-lg p-4">
-                          <p className="text-gray-700">
-                            Membawahi seluruh unit kerja
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        {/* Sub Bagian Tata Usaha */}
-                        <motion.div
-                          className="text-center"
-                          whileHover={{ y: -3 }}
-                        >
-                          <div className="bg-[#1c2c66]/90 text-white py-2 px-4 rounded-t-lg">
-                            <h4 className="font-semibold text-sm">
-                              Sub Bagian Tata Usaha
-                            </h4>
-                          </div>
-                          <div className="border border-gray-200 border-t-0 rounded-b-lg p-3">
-                            <ul className="text-xs text-gray-600 space-y-1">
-                              {[
-                                "Urusan Kepegawaian",
-                                "Urusan Keuangan",
-                                "Urusan Umum & BMN",
-                              ].map((item, index) => (
-                                <motion.li key={index} whileHover={{ x: 3 }}>
-                                  {item}
-                                </motion.li>
-                              ))}
-                            </ul>
-                          </div>
-                        </motion.div>
-
-                        {/* Seksi Bimbingan Klien Pemasyarakatan */}
-                        <motion.div
-                          className="text-center"
-                          whileHover={{ y: -3 }}
-                        >
-                          <div className="bg-[#1c2c66]/90 text-white py-2 px-4 rounded-t-lg">
-                            <h4 className="font-semibold text-sm">
-                              Seksi Bimbingan Klien Pemasyarakatan
-                            </h4>
-                          </div>
-                          <div className="border border-gray-200 border-t-0 rounded-b-lg p-3">
-                            <ul className="text-xs text-gray-600 space-y-1">
-                              {[
-                                "Bimbingan Narapidana",
-                                "Bimbingan Klien Anak",
-                                "Bimbingan Klien Dewasa",
-                              ].map((item, index) => (
-                                <motion.li key={index} whileHover={{ x: 3 }}>
-                                  {item}
-                                </motion.li>
-                              ))}
-                            </ul>
-                          </div>
-                        </motion.div>
-
-                        {/* Seksi Pengamatan dan Penelitian Kemasyarakatan */}
-                        <motion.div
-                          className="text-center"
-                          whileHover={{ y: -3 }}
-                        >
-                          <div className="bg-[#1c2c66]/90 text-white py-2 px-4 rounded-t-lg">
-                            <h4 className="font-semibold text-sm">
-                              Seksi Pengamatan dan Penelitian Kemasyarakatan
-                            </h4>
-                          </div>
-                          <div className="border border-gray-200 border-t-0 rounded-b-lg p-3">
-                            <ul className="text-xs text-gray-600 space-y-1">
-                              {[
-                                "Penelitian Kemasyarakatan",
-                                "Pengamatan Klien",
-                                "Assesmen dan Evaluasi",
-                              ].map((item, index) => (
-                                <motion.li key={index} whileHover={{ x: 3 }}>
-                                  {item}
-                                </motion.li>
-                              ))}
-                            </ul>
-                          </div>
-                        </motion.div>
+                      <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-white border border-gray-200 rounded-md overflow-hidden">
+                        <iframe
+                          src="/struktur-organisasi.pdf"
+                          title="Struktur Organisasi - PDF"
+                          className="w-full h-full"
+                        />
                       </div>
                     </motion.div>
                   </motion.div>
 
-                  {/* ===== Tugas & Fungsi (SESUDAHNYA) ===== */}
+                  {/* ===== Tugas & Fungsi (6 poin) ===== */}
                   <motion.div
                     id="tugas-fungsi"
                     variants={itemVariants}
@@ -342,18 +249,15 @@ const TugasFungsiPage = () => {
                       Tugas dan Fungsi
                     </h2>
 
-                    {/* Intro */}
                     <motion.div
                       className="bg-[#f8cb8b]/20 border-l-4 border-[#1c2c66] p-6 mb-6"
                       whileHover={{ x: 3 }}
                     >
                       <p className="text-gray-700">
-                        Berikut rincian tugas dan fungsi utama pada unit-unit di
-                        Bapas Surakarta:
+                        Berikut rincian tugas dan fungsi utama Bapas Surakarta:
                       </p>
                     </motion.div>
 
-                    {/* Grid of Tugas & Fungsi */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {tugasFungsiItems.map((item, index) => (
                         <motion.div
@@ -380,7 +284,7 @@ const TugasFungsiPage = () => {
                     </div>
                   </motion.div>
 
-                  {/* Dasar Hukum */}
+                  {/* Dasar Hukum (opsional, tetap dipertahankan) */}
                   <motion.div
                     variants={itemVariants}
                     className="bg-[#f8cb8b]/20 border-l-4 border-[#1c2c66] p-6"
@@ -390,10 +294,10 @@ const TugasFungsiPage = () => {
                       Dasar Hukum
                     </h3>
                     <p className="text-gray-600 text-sm">
-                      Seluruh tugas dan fungsi Bapas Surakarta dilaksanakan
-                      berdasarkan peraturan perundang-undangan yang berlaku,
-                      termasuk Undang-Undang Nomor 12 Tahun 1995 tentang
-                      Pemasyarakatan dan peraturan pelaksanaannya.
+                      Pelaksanaan kedudukan, tugas, dan fungsi mengacu pada
+                      peraturan perundang-undangan yang berlaku, termasuk
+                      Undang-Undang Nomor 12 Tahun 1995 tentang Pemasyarakatan
+                      beserta peraturan pelaksanaannya.
                     </p>
                   </motion.div>
                 </motion.div>

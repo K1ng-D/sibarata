@@ -1,25 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FiHome,
   FiCpu,
-  FiPrinter,
   FiBook,
   FiShield,
   FiX,
   FiArrowRight,
   FiChevronRight,
+  FiDollarSign,
 } from "react-icons/fi";
 import { FaCar } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 
 interface GaleriItem {
   title: string;
   url: string;
 }
+
+type FacilityItem = { name: string; description: string };
+type FacilityGroup = {
+  category: string;
+  icon: JSX.Element;
+  items: FacilityItem[];
+  pdfSrc?: string; // optional: tampilkan iframe PDF jika ada
+};
 
 const SaranaPrasaranaPage = () => {
   const [galeri, setGaleri] = useState<GaleriItem[]>([]);
@@ -29,27 +36,31 @@ const SaranaPrasaranaPage = () => {
     fetch("/api/galeri")
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) setGaleri(data.data);
-      });
+        if (data?.success) setGaleri(data.data);
+      })
+      .catch(() => {});
   }, []);
 
   const sidebarItems = [
-    { title: "Sejarah Pemasyarakatan", href: "/tentang" },
+    { title: "Sejarah Bapas Surakarta", href: "/tentang" },
     { title: "Kedudukan, Tugas dan Fungsi", href: "/tentang/tugas-fungsi" },
     { title: "Visi, Misi dan Tata Nilai", href: "/tentang/visi-misi" },
     { title: "Mars Pemasyarakatan", href: "/tentang/mars" },
     { title: "Corporate University", href: "/tentang/corporate-university" },
+    { title: "Prestasi", href: "/tentang/prestasi" },
     { title: "Sarana dan Prasarana", href: "/tentang/sarana-prasarana" },
+    { title: "Profil Pejabat", href: "/pimpinan/profil" },
+    { title: "Sambutan Kapala Satuan Kerja", href: "/pimpinan/sambutan" },
   ];
 
-  const facilities = [
+  const facilities: FacilityGroup[] = [
     {
       category: "Gedung dan Ruangan",
       icon: <FiHome className="text-2xl text-[#1c2c66]" />,
       items: [
         {
           name: "Gedung Utama",
-          description: "Gedung 3 lantai dengan area kerja modern",
+          description: "Gedung 2 lantai dengan area kerja modern",
         },
         {
           name: "Ruang Kepala Bapas",
@@ -81,11 +92,11 @@ const SaranaPrasaranaPage = () => {
       ],
     },
     {
-      category: "Peralatan Kantor",
-      icon: <FiPrinter className="text-2xl text-[#1c2c66]" />,
-      items: [
-        { name: "Printer & Scanner", description: "Multifunction devices" },
-      ],
+      category: "Anggaran Kantor",
+      icon: <FiDollarSign className="text-2xl text-[#1c2c66]" />,
+      items: [],
+      // >>> Tambahkan path PDF kamu di folder /public
+      pdfSrc: "/anggaran.pdf",
     },
     {
       category: "Fasilitas Pendukung",
@@ -111,32 +122,16 @@ const SaranaPrasaranaPage = () => {
   // Variants untuk animasi
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-      },
-    },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
   };
 
-  const openModal = (item: GaleriItem) => {
-    setSelectedImage(item);
-  };
-
-  const closeModal = () => {
-    setSelectedImage(null);
-  };
+  const openModal = (item: GaleriItem) => setSelectedImage(item);
+  const closeModal = () => setSelectedImage(null);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
@@ -340,7 +335,8 @@ const SaranaPrasaranaPage = () => {
                           </div>
                         </div>
 
-                        <div className="p-6">
+                        <div className="p-6 space-y-6">
+                          {/* daftar item */}
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {facility.items.map((item, itemIndex) => (
                               <motion.div
@@ -352,7 +348,7 @@ const SaranaPrasaranaPage = () => {
                                   className="bg-[#1c2c66] p-2 rounded-full mr-4"
                                   whileHover={{ scale: 1.2 }}
                                 >
-                                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                                  <div className="w-2 h-2 bg-white rounded-full" />
                                 </motion.div>
                                 <div>
                                   <h3 className="font-semibold text-[#1c2c66] mb-1">
@@ -365,13 +361,29 @@ const SaranaPrasaranaPage = () => {
                               </motion.div>
                             ))}
                           </div>
+
+                          {/* frame PDF khusus untuk Anggaran Kantor (jika pdfSrc tersedia) */}
+                          {facility.pdfSrc && (
+                            <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                              <h3 className="text-lg font-semibold text-[#1c2c66] mb-3">
+                                Dokumen Anggaran Kantor (PDF)
+                              </h3>
+                              <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-white border border-gray-200 rounded-md overflow-hidden">
+                                <iframe
+                                  src={facility.pdfSrc}
+                                  title={`PDF ${facility.category}`}
+                                  className="w-full h-full"
+                                />
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </motion.div>
                     ))}
                   </motion.div>
 
                   {/* Gallery Section */}
-                  <motion.div variants={itemVariants} className="mt-12">
+                  {/* <motion.div variants={itemVariants} className="mt-12">
                     <h2 className="text-2xl font-bold text-[#1c2c66] mb-6">
                       Galeri Fasilitas
                     </h2>
@@ -402,7 +414,7 @@ const SaranaPrasaranaPage = () => {
                         ))}
                       </div>
                     )}
-                  </motion.div>
+                  </motion.div> */}
                 </motion.div>
               </div>
             </motion.div>

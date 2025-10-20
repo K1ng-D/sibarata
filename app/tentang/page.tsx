@@ -23,6 +23,8 @@ const TentangPage = () => {
     { title: "Corporate University", href: "/tentang/corporate-university" },
     { title: "Prestasi", href: "/tentang/prestasi" },
     { title: "Sarana dan Prasarana", href: "/tentang/sarana-prasarana" },
+    { title: "Profil Pejabat", href: "/pimpinan/profil" },
+    { title: "Sambutan Kapala Satuan Kerja", href: "/pimpinan/sambutan" },
   ];
 
   // Variants untuk animasi
