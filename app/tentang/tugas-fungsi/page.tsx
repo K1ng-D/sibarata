@@ -214,7 +214,7 @@ const TugasFungsiPage = () => {
                   initial="hidden"
                   animate="visible"
                 >
-                  {/* ===== Struktur Organisasi (dengan frame PDF) ===== */}
+                  {/* ===== Struktur Organisasi (Full PDF) ===== */}
                   <motion.div
                     id="struktur"
                     variants={itemVariants}
@@ -224,19 +224,22 @@ const TugasFungsiPage = () => {
                       Struktur Organisasi
                     </h2>
 
-                    {/* Frame PDF responsif */}
-                    <motion.div
-                      className="bg-gray-50 rounded-lg p-4 border border-gray-200"
-                      whileHover={{ y: -2 }}
-                    >
-                      <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-white border border-gray-200 rounded-md overflow-hidden">
-                        <iframe
-                          src="/struktur-organisasi.pdf"
-                          title="Struktur Organisasi - PDF"
-                          className="w-full h-full"
-                        />
-                      </div>
-                    </motion.div>
+                    <div className="w-full h-[85vh] rounded-lg overflow-hidden border border-gray-200">
+                      {/* Gunakan salah satu: <embed> atau <object> */}
+                      <embed
+                        src="/struktur-organisasi.pdf#view=FitH&zoom=page-fit&scrollbar=0&toolbar=0"
+                        type="application/pdf"
+                        className="w-full h-full"
+                      />
+                      {/* Atau:
+    <object data="/struktur-organisasi.pdf#view=FitH&zoom=page-fit" type="application/pdf" className="w-full h-full">
+      <p className="p-4 text-sm text-gray-600">
+        PDF tidak bisa ditampilkan oleh browser ini. 
+        <a href="/struktur-organisasi.pdf" className="underline text-[#1c2c66]">Unduh di sini</a>.
+      </p>
+    </object>
+    */}
+                    </div>
                   </motion.div>
 
                   {/* ===== Tugas & Fungsi (6 poin) ===== */}

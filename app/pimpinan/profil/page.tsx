@@ -157,7 +157,7 @@ const PimpinanProfilPage = () => {
                         className="text-2xl font-bold mb-2"
                         style={{ color: "#1c2c66" }}
                       >
-                        Dr. John Doe, S.H., M.H.
+                        Unggul Widiyo Saputro,A.Md.I.P.,S.Sos.,M.Si.
                       </h3>
                       <p className="font-semibold" style={{ color: "#1c2c66" }}>
                         Kepala Balai Pemasyarakatan Kelas I Surakarta
@@ -173,7 +173,7 @@ const PimpinanProfilPage = () => {
                           NIP
                         </h4>
                         <p className="text-gray-800 font-mono text-lg">
-                          123456789012345678
+                          197206301995031001
                         </p>
                       </div>
                     </div>
