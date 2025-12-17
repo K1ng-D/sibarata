@@ -35,7 +35,6 @@ const StatistikCard = ({ title, value, icon, delay = 0 }: any) => (
         </div>
 
         <div className="flex-1 min-w-0">
-          {/* Perubahan di sini: buang line-clamp-1, tambah wrap */}
           <h3 className="text-xs font-medium uppercase tracking-wide text-gray-500 mb-1 whitespace-normal break-words">
             {title}
           </h3>
