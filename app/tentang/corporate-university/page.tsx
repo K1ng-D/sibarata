@@ -245,7 +245,7 @@ const CorporateUniversityPage = () => {
                       Corporate University
                     </h1>
                     <p className="text-gray-300">
-                      Kumham CorpU - Strategi Pengembangan SDM Kementerian Hukum
+                      Kumham Corp - Strategi Pengembangan SDM Kementerian Hukum
                       dan HAM
                     </p>
                   </div>

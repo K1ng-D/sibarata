@@ -380,40 +380,6 @@ const SaranaPrasaranaPage = () => {
                       </motion.div>
                     ))}
                   </motion.div>
-
-                  {/* Gallery Section */}
-                  {/* <motion.div variants={itemVariants} className="mt-12">
-                    <h2 className="text-2xl font-bold text-[#1c2c66] mb-6">
-                      Galeri Fasilitas
-                    </h2>
-                    {galeri.length === 0 ? (
-                      <p className="text-gray-500">Belum ada gambar.</p>
-                    ) : (
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {galeri.map((item, index) => (
-                          <motion.div
-                            key={index}
-                            whileHover={{ y: -5, scale: 1.02 }}
-                            className="relative h-48 rounded-lg overflow-hidden border border-gray-200 cursor-pointer group"
-                            onClick={() => openModal(item)}
-                          >
-                            <motion.img
-                              src={item.url}
-                              alt={item.title}
-                              className="w-full h-full object-cover"
-                              whileHover={{ scale: 1.1 }}
-                              transition={{ duration: 0.3 }}
-                            />
-                            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                              <span className="text-white font-semibold text-center px-2">
-                                {item.title}
-                              </span>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    )}
-                  </motion.div> */}
                 </motion.div>
               </div>
             </motion.div>
