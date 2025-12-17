@@ -61,9 +61,9 @@ const TugasFungsiPage = () => {
     },
     {
       icon: <FiHelpCircle className="text-2xl text-[#1c2c66]" />,
-      title: "Koordinasi Stakeholder Lain",
+      title: "Koordinasi dan Kerjasama",
       description:
-        "Melakukan koordinasi dengan pemangku kepentingan lain guna mendukung efektivitas pelaksanaan program pemasyarakatan.",
+        "Melakukan koordinasi dan kerjasama dengan stockholder ( pemangku kepentingan guna mendukung efektivitas pelaksanaan program pemasyarakatan).",
     },
   ];
 
@@ -299,7 +299,7 @@ const TugasFungsiPage = () => {
                     <p className="text-gray-600 text-sm">
                       Pelaksanaan kedudukan, tugas, dan fungsi mengacu pada
                       peraturan perundang-undangan yang berlaku, termasuk
-                      Undang-Undang Nomor 12 Tahun 1995 tentang Pemasyarakatan
+                      Undang-Undang Nomor 22 Tahun 2022 tentang Pemasyarakatan
                       beserta peraturan pelaksanaannya.
                     </p>
                   </motion.div>

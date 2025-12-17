@@ -195,7 +195,7 @@ const Ladunimart = () => {
                   transition={{ duration: 0.6 }}
                 />
                 <span className="relative z-10 flex items-center gap-2">
-                  Selengkapnyap
+                  Selengkapnya
                   <FiArrowRight className="text-lg" />
                 </span>
               </motion.button>

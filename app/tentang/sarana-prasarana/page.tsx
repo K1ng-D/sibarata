@@ -101,22 +101,21 @@ const SaranaPrasaranaPage = () => {
     {
       category: "Fasilitas Pendukung",
       icon: <FiShield className="text-2xl text-[#1c2c66]" />,
-      items: [{ name: "Sistem CCTV", description: "Pengawasan 24 jam" }],
-    },
-    {
-      category: "Fasilitas Kesejahteraan",
-      icon: <FiBook className="text-2xl text-[#1c2c66]" />,
-      items: [{ name: "Musholla", description: "Tempat ibadah yang nyaman" }],
+      items: [
+        { name: "Sistem CCTV", description: "Pengawasan 24 jam" },
+        { name: "Musholla", description: "Tempat ibadah yang nyaman" },
+        { name: "Ruang Laktasi", description: "Fasilitas untuk ibu menyusui" },
+      ],
     },
   ];
 
   const stats = [
-    { number: "2,500", label: "M² Total Area" },
-    { number: "45", label: "Ruangan" },
-    { number: "80+", label: "Unit Komputer" },
-    { number: "12", label: "Kendaraan" },
-    { number: "24/7", label: "Security" },
-    { number: "100%", label: "Internet Coverage" },
+    { number: "432 m²", label: "Luas Tanah" },
+    { number: "910 m²", label: "Luas Bangunan" },
+    { number: "11", label: "Jumlah Ruangan" },
+    { number: "32 Unit", label: "Jumlah PC/Komputer" },
+    { number: "2", label: "Kendaraan Roda 4" },
+    { number: "30", label: "Kendaraan Roda 2" },
   ];
 
   // Variants untuk animasi

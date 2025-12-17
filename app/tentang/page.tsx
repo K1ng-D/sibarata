@@ -65,13 +65,6 @@ const TentangPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <motion.div
-              className="w-12 h-12 bg-[#f8cb8b]/20 rounded-lg flex items-center justify-center mr-4"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <span className="text-xl font-bold text-[#f8cb8b]">S</span>
-            </motion.div>
             <div>
               <h1 className="text-3xl font-bold">Tentang Satuan Kerja</h1>
               <p className="text-gray-300 mt-1">
