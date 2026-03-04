@@ -263,7 +263,6 @@ const DetailProdukHukumPage = () => {
         </div>
       </div>
 
-      {/* Rekomendasi */}
       <div className="bg-white rounded-lg shadow-sm p-6 mb-6 border border-gray-200">
         <div className="flex items-center justify-between gap-3 mb-4">
           <h3 className="text-lg font-semibold text-[#1c2c66]">
