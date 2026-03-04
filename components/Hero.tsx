@@ -2,11 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiArrowRight, FiChevronLeft, FiChevronRight, FiStar, FiUsers, FiShield } from "react-icons/fi";
+import {
+  FiArrowRight,
+  FiChevronLeft,
+  FiChevronRight,
+  FiStar,
+  FiUsers,
+  FiShield,
+} from "react-icons/fi";
 import Image from "next/image";
 import Logo from "@/public/logo.png";
 
-// 🔥 Import gambar background
 import bg1 from "@/public/bannerr-bapas-solo.png";
 import bg2 from "@/public/mmt-mpp-bapas-340x130cm-111.png";
 
@@ -14,7 +20,6 @@ const Hero = () => {
   const slides = [bg1, bg2];
   const [current, setCurrent] = useState(0);
 
-  // Auto slide setiap 4 detik - FUNGSI TETAP SAMA
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
@@ -22,13 +27,12 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, [slides.length]);
 
-  // Next & Prev manual - FUNGSI TETAP SAMA
   const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
-  const prevSlide = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  const prevSlide = () =>
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Images - DIPERBAIKI DENGAN ANIMASI YANG LEBIH SMOOTH */}
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
           <motion.div
@@ -54,14 +58,14 @@ const Hero = () => {
       {/* Floating Decorative Elements */}
       <motion.div
         className="absolute top-20 left-10 text-[#f8cb8b] text-2xl"
-        animate={{ 
+        animate={{
           y: [0, -20, 0],
-          rotate: [0, 10, 0]
+          rotate: [0, 10, 0],
         }}
-        transition={{ 
-          duration: 4, 
+        transition={{
+          duration: 4,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: "easeInOut",
         }}
       >
         <FiStar />
@@ -69,15 +73,15 @@ const Hero = () => {
 
       <motion.div
         className="absolute top-40 right-20 text-[#f8cb8b] text-2xl"
-        animate={{ 
+        animate={{
           y: [0, -15, 0],
-          rotate: [0, -15, 0]
+          rotate: [0, -15, 0],
         }}
-        transition={{ 
-          duration: 3, 
+        transition={{
+          duration: 3,
           repeat: Infinity,
           ease: "easeInOut",
-          delay: 0.5
+          delay: 0.5,
         }}
       >
         <FiUsers />
@@ -85,15 +89,15 @@ const Hero = () => {
 
       <motion.div
         className="absolute bottom-40 left-20 text-[#f8cb8b] text-2xl"
-        animate={{ 
+        animate={{
           y: [0, -25, 0],
-          rotate: [0, 20, 0]
+          rotate: [0, 20, 0],
         }}
-        transition={{ 
-          duration: 5, 
+        transition={{
+          duration: 5,
           repeat: Infinity,
           ease: "easeInOut",
-          delay: 1
+          delay: 1,
         }}
       >
         <FiShield />
@@ -111,24 +115,24 @@ const Hero = () => {
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Image 
-              src={Logo} 
-              alt="Logo" 
-              width={150} 
-              height={150} 
-              className="mx-auto mb-6 drop-shadow-2xl" 
+            <Image
+              src={Logo}
+              alt="Logo"
+              width={150}
+              height={150}
+              className="mx-auto mb-6 drop-shadow-2xl"
             />
           </motion.div>
-          
+
           {/* Title dengan animasi bertahap */}
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-5xl font-bold mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             Selamat Datang di{" "}
-            <motion.span 
+            <motion.span
               className="text-[#f8cb8b] relative"
               whileHover={{ scale: 1.05 }}
             >
@@ -142,7 +146,7 @@ const Hero = () => {
             </motion.span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             className="text-lg md:text-xl max-w-2xl mx-auto mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -158,7 +162,7 @@ const Hero = () => {
               boxShadow: "0 15px 30px rgba(248, 203, 139, 0.3)",
             }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => window.location.href = "/tentang"}
+            onClick={() => (window.location.href = "/tentang")}
             className="bg-[#f8cb8b] text-[#1c2c66] px-8 py-3 rounded-full font-medium shadow-lg hover:bg-[#f8cb8b]/90 transition text-lg flex items-center mx-auto relative overflow-hidden group"
           >
             {/* Ripple effect */}
@@ -168,16 +172,14 @@ const Hero = () => {
               whileHover={{ scale: 2 }}
               transition={{ duration: 0.6 }}
             />
-            
+
             <span className="relative z-10 flex items-center">
               Tentang Kami
               <motion.div
                 initial={{ x: -5, opacity: 0 }}
                 whileHover={{ x: 5, opacity: 1 }}
                 transition={{ duration: 0.2 }}
-              >
-           
-              </motion.div>
+              ></motion.div>
             </span>
           </motion.button>
         </motion.div>
