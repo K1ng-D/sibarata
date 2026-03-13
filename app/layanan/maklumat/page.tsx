@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FiFacebook, FiX, FiLinkedin, FiArrowLeft } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
-import Maklumat from "@/public/maklumat.jpg";
+import Maklumat from "@/public/maklumatnew.jpeg";
 
 const MaklumatPelayananPage = () => {
   return (
