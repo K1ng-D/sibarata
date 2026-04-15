@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   FiHome,
   FiCpu,
-  FiBook,
   FiShield,
   FiX,
   FiArrowRight,
   FiChevronRight,
   FiDollarSign,
+  FiFileText,
 } from "react-icons/fi";
 import { FaCar } from "react-icons/fa";
 import { JSX, useEffect, useState } from "react";
@@ -25,7 +25,8 @@ type FacilityGroup = {
   category: string;
   icon: JSX.Element;
   items: FacilityItem[];
-  pdfSrc?: string; // optional: tampilkan iframe PDF jika ada
+  pdfSrc?: string;
+  pdfTitle?: string;
 };
 
 const SaranaPrasaranaPage = () => {
@@ -95,8 +96,47 @@ const SaranaPrasaranaPage = () => {
       category: "Anggaran Kantor",
       icon: <FiDollarSign className="text-2xl text-[#1c2c66]" />,
       items: [],
-      // >>> Tambahkan path PDF kamu di folder /public
-      pdfSrc: "/anggaran.pdf",
+      pdfSrc: "/anggaran-new.pdf",
+      pdfTitle: "Dokumen Anggaran Kantor (PDF)",
+    },
+    {
+      category:
+        "Rencana Strategis Balai Pemasyarakatan Kelas I Surakarta 2025-2029",
+      icon: <FiFileText className="text-2xl text-[#1c2c66]" />,
+      items: [],
+      pdfSrc: "/renstra-bapas-surakarta-2025-2029.pdf",
+      pdfTitle:
+        "Rencana Strategis Balai Pemasyarakatan Kelas I Surakarta 2025-2029",
+    },
+    {
+      category: "Laporan Kinerja Instansi Pemerintah BAPAS SURAKARTA 2025",
+      icon: <FiFileText className="text-2xl text-[#1c2c66]" />,
+      items: [],
+      pdfSrc: "/lapkin-bapas-surakarta-2025.pdf",
+      pdfTitle: "Laporan Kinerja Instansi Pemerintah BAPAS SURAKARTA 2025",
+    },
+    {
+      category:
+        "Rencana Strategis Kementrian Imigrasi dan Pemasyarakatan 2025-2029",
+      icon: <FiFileText className="text-2xl text-[#1c2c66]" />,
+      items: [],
+      pdfSrc: "/renstra-kementrian-imigrasi-dan-pemasyarakatan-2025-2029.pdf",
+      pdfTitle:
+        "Rencana Strategis Kementrian Imigrasi dan Pemasyarakatan 2025-2029",
+    },
+    {
+      category: "Rencana Strategis Direktorat Jendral Pemasyarakatan 2025-2029",
+      icon: <FiFileText className="text-2xl text-[#1c2c66]" />,
+      items: [],
+      pdfSrc: "/renstra-ditjen-pemasyarakatan-2025-2029.pdf",
+      pdfTitle: "Rencana Strategis Direktorat Jendral Pemasyarakatan 2025-2029",
+    },
+    {
+      category: "Rencana Aksi Atas Perjanjian Kinerja BAPAS Kelas I Surakarta",
+      icon: <FiFileText className="text-2xl text-[#1c2c66]" />,
+      items: [],
+      pdfSrc: "/rencana-aksi-perjanjian-kinerja-bapas-surakarta.pdf",
+      pdfTitle: "Rencana Aksi Atas Perjanjian Kinerja BAPAS Kelas I Surakarta",
     },
     {
       category: "Fasilitas Pendukung",
@@ -118,7 +158,6 @@ const SaranaPrasaranaPage = () => {
     { number: "30", label: "Kendaraan Roda 2" },
   ];
 
-  // Variants untuk animasi
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -243,7 +282,6 @@ const SaranaPrasaranaPage = () => {
               whileHover={{ scale: 1.005 }}
               className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
             >
-              {/* Hero Section */}
               <div className="bg-gradient-to-r from-[#1c2c66] to-[#2a3b7a] p-8 text-white">
                 <motion.div
                   className="flex items-center"
@@ -335,38 +373,51 @@ const SaranaPrasaranaPage = () => {
                         </div>
 
                         <div className="p-6 space-y-6">
-                          {/* daftar item */}
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {facility.items.map((item, itemIndex) => (
-                              <motion.div
-                                key={itemIndex}
-                                whileHover={{ x: 3, scale: 1.02 }}
-                                className="flex items-start p-4 bg-gray-50 rounded-lg hover:bg-[#f8cb8b]/10 transition-all duration-300 border border-gray-200 hover:shadow-md"
-                              >
+                          {facility.items.length > 0 && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              {facility.items.map((item, itemIndex) => (
                                 <motion.div
-                                  className="bg-[#1c2c66] p-2 rounded-full mr-4"
-                                  whileHover={{ scale: 1.2 }}
+                                  key={itemIndex}
+                                  whileHover={{ x: 3, scale: 1.02 }}
+                                  className="flex items-start p-4 bg-gray-50 rounded-lg hover:bg-[#f8cb8b]/10 transition-all duration-300 border border-gray-200 hover:shadow-md"
                                 >
-                                  <div className="w-2 h-2 bg-white rounded-full" />
+                                  <motion.div
+                                    className="bg-[#1c2c66] p-2 rounded-full mr-4"
+                                    whileHover={{ scale: 1.2 }}
+                                  >
+                                    <div className="w-2 h-2 bg-white rounded-full" />
+                                  </motion.div>
+                                  <div>
+                                    <h3 className="font-semibold text-[#1c2c66] mb-1">
+                                      {item.name}
+                                    </h3>
+                                    <p className="text-sm text-gray-600">
+                                      {item.description}
+                                    </p>
+                                  </div>
                                 </motion.div>
-                                <div>
-                                  <h3 className="font-semibold text-[#1c2c66] mb-1">
-                                    {item.name}
-                                  </h3>
-                                  <p className="text-sm text-gray-600">
-                                    {item.description}
-                                  </p>
-                                </div>
-                              </motion.div>
-                            ))}
-                          </div>
+                              ))}
+                            </div>
+                          )}
 
-                          {/* frame PDF khusus untuk Anggaran Kantor (jika pdfSrc tersedia) */}
                           {facility.pdfSrc && (
                             <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                              <h3 className="text-lg font-semibold text-[#1c2c66] mb-3">
-                                Dokumen Anggaran Kantor (PDF)
-                              </h3>
+                              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+                                <h3 className="text-lg font-semibold text-[#1c2c66]">
+                                  {facility.pdfTitle ||
+                                    `Dokumen ${facility.category}`}
+                                </h3>
+                                <a
+                                  href={facility.pdfSrc}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#1c2c66] text-white hover:bg-[#2a3b7a] transition-colors w-fit"
+                                >
+                                  <FiFileText />
+                                  Lihat PDF
+                                </a>
+                              </div>
+
                               <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-white border border-gray-200 rounded-md overflow-hidden">
                                 <iframe
                                   src={facility.pdfSrc}
